@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Frontend Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Welcome to Flask Frontend Example</h1>
+    <div id="data-container"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Fetch data from Flask backend
+            $.ajax({
+                url: '/api/data',
+                type: 'GET',
+                success: function(response) {
+                    $('#data-container').text(response.message);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
