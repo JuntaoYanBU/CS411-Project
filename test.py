@@ -3,7 +3,8 @@ from pymongo import MongoClient
 
 # Accesses the MongoDB database and finds the first 10 restaurants whose
 # cuisine type is American
-client = MongoClient("mongodb+srv://wyang25:JfyjCQm6aPGwzWY4@cluster0.l0ejen6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+# Removed URL link for safety reasons
+client = MongoClient()
 db = client['sample_restaurants']
 collection = db['restaurants']
 query = {"cuisine": "American"}
