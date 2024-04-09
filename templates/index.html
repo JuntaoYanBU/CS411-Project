@@ -8,7 +8,7 @@
 
 <body>
     <h1>Welcome to Flask Frontend Example</h1>
-    <div id="data-container"></div>
+    <div id="data-container"> {{ text | replace('\n', '<br>') | safe }} </div>
 
     <script>
         $(document).ready(function () {
