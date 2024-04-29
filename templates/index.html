@@ -1,37 +1,28 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Flask Frontend Example</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-
 <body>
-    <h1>Welcome to Flask Frontend Example</h1>
-    <div id="data-container"> {{ text | replace('\n', '<br>') | safe }} </div>
+    <h1>Song Remixer</h1>
+    <form>
+        <label for="songTitleInput">Song Title:</label>
+        <input type="text" id="songTitleInput" name="songTitle">
+        <br>
+        <label for="artistNameInput">Artist Name:</label>
+        <input type="text" id="artistNameInput" name="artistName">
+        <br>
+        <label for="newGenreInput">Remix Genre:</label>
+        <input type="text" id="newGenreInput" name="newGenre">
+        <br>
+        <button type="button" id="submitSong">Remix Song</button>
+        <textarea id="lyricsDisplay" readonly></textarea>
+        <textarea id="remixDisplay" readonly></textarea>
 
-    <script>
-        $(document).ready(function () {
-            // Fetch data from Flask backend
-            $.ajax({
-                // Go look for the route that's /api/data
-                // and get data from it
-                url: '/api/data',
-                type: 'GET',
-                success: function (response) {
-                    // The # is used to find HTML elements with 
-                    // id attribute set to "data-container", which
-                    // is apparently common.
-                    $('#data-container').text(response.message);
-                },
-                // If either the url doesn't exist or
-                // if you cannot get the data, send an error to the log
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-        });
-    </script>
+    </form>
+
+    <!-- Link to external JavaScript file -->
+    <script src="/static/js/app.js"></script>
 </body>
-
 </html>
