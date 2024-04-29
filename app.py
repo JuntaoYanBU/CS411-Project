@@ -143,7 +143,7 @@ def get_remix():
         else:
             return jsonify({"status": "error",
                             "found": False,
-                            "message": "No matching document found"}), 404
+                            "message": "No matching document found"})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
