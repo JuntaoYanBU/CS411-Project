@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Flask Frontend Example</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
-<body>
-    <h1>Song Remixer</h1>
-    <form>
-        <label for="songTitleInput">Song Title:</label>
-        <input type="text" id="songTitleInput" name="songTitle">
-        <br>
-        <label for="artistNameInput">Artist Name:</label>
-        <input type="text" id="artistNameInput" name="artistName">
-        <br>
-        <label for="newGenreInput">Remix Genre:</label>
-        <input type="text" id="newGenreInput" name="newGenre">
-        <br>
-        <button type="button" id="submitSong">Remix Song</button>
-        <textarea id="lyricsDisplay" readonly></textarea>
-        <textarea id="remixDisplay" readonly></textarea>
 
-    </form>
+<body>
+    <h1> Song Remixer</h1>
+    <div class="container">
+        <form>
+            <label for="songTitleInput">Song Title</label>
+            <br>
+            <input type="text" id="songTitleInput" name="songTitle">
+            <br>
+            <label for="artistNameInput">Artist Name</label>
+            <br>
+            <input type="text" id="artistNameInput" name="artistName">
+            <br>
+            <label for="newGenreInput">Remix Genre</label>
+            <br>
+            <input type="text" id="newGenreInput" name="newGenre">
+            <br>
+            <br>
+            <button class="button" type="button" id="submitSong">Remix!</button>
+            <br>
+            <br>
+            <div class="display-container">
+                <div class="display">
+                    <label for="lyricsDisplay">Original lyrics</label>
+                    <br>
+                    <textarea id="lyricsDisplay" readonly></textarea>
+                </div>
+                <div class="display">
+                    <label for="remixDisplay">Remixed lyrics</label>
+                    <br>
+                    <textarea id="remixDisplay" readonly></textarea>
+                </div>
+            </div>
+
+        </form>
+    </div>
 
     <!-- Link to external JavaScript file -->
     <script src="/static/js/app.js"></script>
 </body>
+
 </html>

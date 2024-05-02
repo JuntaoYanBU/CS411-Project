@@ -1,24 +1,24 @@
-$(document).ready(function() {
-    $('#submitName').click(function() {
+$(document).ready(function () {
+    $('#submitName').click(function () {
         var firstName = $('#firstNameInput').val();
         var lastName = $('#lastNameInput').val();
-        
+
         $.ajax({
             type: 'POST',
             url: '/db/addUser',
             contentType: 'application/json',
             data: JSON.stringify({ "first_name": firstName, "last_name": lastName }),
-            success: function(response) {
+            success: function (response) {
                 console.log(response.message);
             },
-            error: function(xhr) {
+            error: function (xhr) {
                 console.log('Error:', xhr.responseText);
             }
         });
     });
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#submitSong').click(handleRemixSubmission);
 });
 
@@ -31,7 +31,7 @@ async function handleRemixSubmission() {
         const getLyricsResponse = await getLyrics(songTitle, artistName);
         console.log(getLyricsResponse.lyrics);
 
-        const findRemixResponse = await findRemix(getLyricsResponse.title,getLyricsResponse.artist,newGenre);
+        const findRemixResponse = await findRemix(getLyricsResponse.title, getLyricsResponse.artist, newGenre);
 
         if (findRemixResponse.found) {
             $('#lyricsDisplay').val(getLyricsResponse.lyrics);
@@ -39,15 +39,15 @@ async function handleRemixSubmission() {
         } else {
             const remixLyricsResponse = await remixLyrics(getLyricsResponse.lyrics, newGenre);
             console.log(remixLyricsResponse.remixed_lyrics);
-        
+
             const storeLyricsResponse = await storeLyrics(getLyricsResponse.title, getLyricsResponse.artist, newGenre, remixLyricsResponse.remixed_lyrics);
             console.log("Lyrics stored successfully");
-            
+
             $('#lyricsDisplay').val(getLyricsResponse.lyrics);
             $('#remixDisplay').val(remixLyricsResponse.remixed_lyrics);
         }
 
-    } 
+    }
     catch (error) {
         console.log('Error:', error.responseText);
     }
