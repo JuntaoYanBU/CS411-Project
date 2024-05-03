@@ -65,9 +65,18 @@ def get_lyrics():
 
         # Remove empty lines and metadata lines
         cleaned_lines = []
-        for line in lines:
-            if line.strip() and not any(word in line for word in ["Lyrics", "Contributor", "Translation", "Embed", "You might also like"]):
-                cleaned_lines.append(line)
+        for i, line in enumerate(lines):
+            if i == len(lines) - 1:
+                # If it's the last line, remove "You might also like" and "Embed" if present
+                if "You might also like" in line:
+                    line = line.split("You might also like")[0].strip()
+                if "Embed" in line:
+                    # Remove numbers immediately before "Embed" without any spaces
+                    line = line.split("Embed")[0].strip().rstrip("0123456789")
+            if " Lyrics" in line:
+                # If " Lyrics" is present in the line, show only the part after " Lyrics"
+                line = line.split(" Lyrics", 1)[1].strip()
+            cleaned_lines.append(line)
 
         # Join the cleaned lines back into a single string
         cleaned_lyrics = "\n".join(cleaned_lines)
@@ -77,6 +86,7 @@ def get_lyrics():
         return jsonify({"status": "success", "lyrics": cleaned_lyrics, "artist": artist, "title": title})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @app.route('/openai/remixLyrics', methods=['POST'])
 def remix_lyrics():
