@@ -56,35 +56,25 @@ def get_lyrics():
         return jsonify({"status": "error", "message": "Missing song name or artist name"}), 400
 
     try:
-        song = genius.search_song(title=song_name,artist=artist_name)
+        song = genius.search_song(title=song_name, artist=artist_name)
         lyrics = song.lyrics
+
+        # Clean up the lyrics
+        # Split the lyrics into lines
+        lines = lyrics.split("\n")
+
+        # Remove empty lines and metadata lines
+        cleaned_lines = []
+        for line in lines:
+            if line.strip() and not any(word in line for word in ["Lyrics", "Contributor", "Translation", "Embed", "You might also like"]):
+                cleaned_lines.append(line)
+
+        # Join the cleaned lines back into a single string
+        cleaned_lyrics = "\n".join(cleaned_lines)
+
         artist = song.artist
         title = song.title
-        
-
-        # Getting rid of the stub at the end
-        new_lyrics = lyrics[:-5]
-        numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        last_character = new_lyrics[-1]
-        while last_character in numbers:
-            new_lyrics = new_lyrics[:-1]
-            last_character = new_lyrics[-1]
-        
-        # Getting rid of the stub at the start as well
-        # First check if there's an intro
-        intro_index = new_lyrics.find("[Intro")
-        if intro_index != -1:
-            new_lyrics = new_lyrics[intro_index:]
-        else:
-            # If there isn't an intro, then check for the first verse
-            verse_index = new_lyrics.find("[Verse 1")
-            if verse_index != -1:
-            # Extract everything after [Verse 1]
-                new_lyrics = new_lyrics[verse_index:]
-        
-
-
-        return jsonify({"status": "success", "lyrics": new_lyrics, "artist": artist, "title": title})
+        return jsonify({"status": "success", "lyrics": cleaned_lyrics, "artist": artist, "title": title})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
