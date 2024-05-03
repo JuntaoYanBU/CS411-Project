@@ -8,36 +8,33 @@
 </head>
 
 <body>
-    <h1> Song Remixer</h1>
+    <h1>Song Remixer</h1>
     <div class="container">
         <form>
-            <label for="songTitleInput">Song Title</label>
-            <br>
-            <input type="text" id="songTitleInput" name="songTitle">
-            <br>
-            <label for="artistNameInput">Artist Name</label>
-            <br>
-            <input type="text" id="artistNameInput" name="artistName">
-            <br>
-            <label for="newGenreInput">Remix Genre</label>
-            <br>
-            <input type="text" id="newGenreInput" name="newGenre">
-            <br>
-            <br>
-            <button class="button" type="button" id="submitSong">Remix!</button>
-            <br>
-            <br>
-            <div class="display-container">
-                <div class="display">
-                    <label for="lyricsDisplay">Original lyrics</label>
-                    <br>
-                    <textarea id="lyricsDisplay" readonly></textarea>
-                </div>
-                <div class="display">
-                    <label for="remixDisplay">Remixed lyrics</label>
-                    <br>
-                    <textarea id="remixDisplay" readonly></textarea>
-                </div>
+            <div class="left">
+                <div class="text-container" id="lyricsDisplay" readonly style="display: none; float: left;"></div>
+            </div>
+            <div class="right">
+                <div class="text-container" id="remixDisplay" readonly style="display: none; float: right;"></div>
+            </div>
+
+
+            <div class="center">
+                <label for="songTitleInput">Song Title:</label>
+                <br>
+                <input type="text" id="songTitleInput" name="songTitle">
+                <br>
+                <label for="artistNameInput">Artist Name:</label>
+                <br>
+                <input type="text" id="artistNameInput" name="artistName">
+                <br>
+                <label for="newGenreInput">Remix Genre:</label>
+                <br>
+                <input type="text" id="newGenreInput" name="newGenre">
+                <br><br>
+                <button class="button" type="button" id="submitSong">Remix Song</button>
+                <br><br>
+                <p id="loadingText" style="display: none; text-align: center;">Generating</p>
             </div>
 
         </form>

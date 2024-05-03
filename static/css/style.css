@@ -1,11 +1,15 @@
 :root {
-  --background-color: rgb(6, 11, 25);
+  --background-color: rgb(5, 14, 40);
   --font-family: Courier;
   --font-color: white;
 }
 
 h1 {
   text-align: center;
+}
+
+p {
+  color: var(--font-color)
 }
 
 body {
@@ -17,6 +21,40 @@ body {
   padding: 0px;
 }
 
+/* Hide the scrollbar */
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.left {
+  position: absolute;
+  left: 0;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.right {
+  position: absolute;
+  right: 0;
+}
+
+.text-container {
+  /* Set the width of the container */
+  width: 300px;
+  /* Do not set height to allow vertical expansion */
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
 .button {
   background-color: green;
   color: var(--font-color);
@@ -24,23 +62,4 @@ body {
 
 .button:hover {
   background-color: rgb(5, 87, 5);
-}
-
-.container {
-  text-align: center;
-}
-
-.display-container {
-  display: inline-block;
-  width: auto;
-  /* Allow the container to adjust its width based on the content */
-  white-space: nowrap;
-  margin: 0;
-  padding: 0;
-}
-
-.display {
-  display: inline-block;
-  vertical-align: top;
-  width: 50%;
 }

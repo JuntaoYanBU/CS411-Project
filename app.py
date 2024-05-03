@@ -56,13 +56,37 @@ def get_lyrics():
         return jsonify({"status": "error", "message": "Missing song name or artist name"}), 400
 
     try:
-        song = genius.search_song(title=song_name,artist=artist_name)
+        song = genius.search_song(title=song_name, artist=artist_name)
         lyrics = song.lyrics
+
+        # Clean up the lyrics
+        # Split the lyrics into lines
+        lines = lyrics.split("\n")
+
+        # Remove empty lines and metadata lines
+        cleaned_lines = []
+        for i, line in enumerate(lines):
+            if i == len(lines) - 1:
+                # If it's the last line, remove "You might also like" and "Embed" if present
+                if "You might also like" in line:
+                    line = line.split("You might also like")[0].strip()
+                if "Embed" in line:
+                    # Remove numbers immediately before "Embed" without any spaces
+                    line = line.split("Embed")[0].strip().rstrip("0123456789")
+            if " Lyrics" in line:
+                # If " Lyrics" is present in the line, show only the part after " Lyrics"
+                line = line.split(" Lyrics", 1)[1].strip()
+            cleaned_lines.append(line)
+
+        # Join the cleaned lines back into a single string
+        cleaned_lyrics = "\n".join(cleaned_lines)
+
         artist = song.artist
         title = song.title
-        return jsonify({"status": "success", "lyrics": lyrics, "artist": artist, "title": title})
+        return jsonify({"status": "success", "lyrics": cleaned_lyrics, "artist": artist, "title": title})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @app.route('/openai/remixLyrics', methods=['POST'])
 def remix_lyrics():
