@@ -1,5 +1,7 @@
 # The Lyrics Remixer
 
+[Video here!](https://drive.google.com/file/d/1Fm55n2Imu72P6F5965AnvsSUazPXxIpZ/view?usp=sharing)
+
 The Lyrics Remixer is a web application that allows users to enter a song name, artist name, and a new genre, and it remixes the lyrics of the song into the specified genre using OpenAI's language model. The remixed lyrics are then stored in a MongoDB database for future retrieval.
 
 ## Prerequisites
