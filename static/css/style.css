@@ -48,15 +48,12 @@ body::-webkit-scrollbar {
 }
 
 .text-container {
-  width: 300px;
   /* Set the width of the container */
+  width: 300px;
   /* Do not set height to allow vertical expansion */
   border: 1px solid #ccc;
-  /* Optional: Add border for visual clarity */
   padding: 10px;
-  /* Optional: Add padding for spacing */
 }
-
 
 .button {
   background-color: green;
@@ -65,19 +62,4 @@ body::-webkit-scrollbar {
 
 .button:hover {
   background-color: rgb(5, 87, 5);
-}
-
-.display-container {
-  display: inline-block;
-  width: auto;
-  /* Allow the container to adjust its width based on the content */
-  white-space: nowrap;
-  margin: 0;
-  padding: 0;
-}
-
-.display {
-  display: inline-block;
-  vertical-align: top;
-  width: 50%;
 }
