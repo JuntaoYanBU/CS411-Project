@@ -21,7 +21,7 @@ git clone https://github.com/JuntaoYanBU/CS411-Project.git
 - pip install lyricsgenius
 - pip install python-dotenv
 
-3. Navigate to your local repository directory, checkout the branch "Beautyfying-the-website", create a `.env` file there, providing the necessary environment variables as follow:
+3. Navigate to your local repository directory, go to main branch, create a `.env` file there, containing the necessary environment variables as follow:
 - OPENAI_API_KEY=your-openai-api-key
 - GENIUS_ACCESS_TOKEN=your-lyricsgenius-api-key
 Replace `your-openai-api-key` and `your-lyricsgenius-api-key` with your keys. 
