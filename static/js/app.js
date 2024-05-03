@@ -170,6 +170,7 @@ function toggleVisibility() {
     if (lyricsDisplay.style.display === 'none') {
         lyricsDisplay.style.display = 'inline-block';
     } else {
+        lyricsDisplay.innerHTML = ''; // Clear the contents of lyricsDisplay
         lyricsDisplay.style.display = 'none';
     }
 
@@ -177,6 +178,7 @@ function toggleVisibility() {
     if (remixDisplay.style.display === 'none') {
         remixDisplay.style.display = 'inline-block';
     } else {
+        remixDisplay.innerHTML = ''; // Clear the contents of remixDisplay
         remixDisplay.style.display = 'none';
     }
 }
