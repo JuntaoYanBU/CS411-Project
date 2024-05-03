@@ -60,7 +60,21 @@ def get_lyrics():
         lyrics = song.lyrics
         artist = song.artist
         title = song.title
-        return jsonify({"status": "success", "lyrics": lyrics, "artist": artist, "title": title})
+        
+        # Getting rid of the stub at the end
+        new_lyrics = lyrics[:-5]
+        numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        last_character = new_lyrics[-1]
+        while last_character in numbers:
+            new_lyrics = new_lyrics[:-1]
+            last_character = new_lyrics[-1]
+        # Getting rid of the stub at the start as well
+        verse_index = new_lyrics.find("[Verse 1")
+        if verse_index != -1:
+        # Extract everything after [Verse 1]
+            new_lyrics = new_lyrics[verse_index:]
+
+        return jsonify({"status": "success", "lyrics": new_lyrics, "artist": artist, "title": title})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 

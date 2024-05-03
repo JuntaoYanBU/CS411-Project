@@ -51,9 +51,9 @@ async function handleRemixSubmission() {
             newLyrics = getLyricsResponse.lyrics.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
             newRemixed = findRemixResponse.remixed_lyrics.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
             const lyricsDisplay = document.getElementById('lyricsDisplay');
-            lyricsDisplay.innerHTML += newLyrics;
+            lyricsDisplay.innerHTML = newLyrics;
             const remixDisplay = document.getElementById('remixDisplay');
-            remixDisplay.innerHTML += newRemixed;
+            remixDisplay.innerHTML = newRemixed;
             // $('#lyricsDisplay').val(getLyricsResponse.lyrics);
             // $('#remixDisplay').val(findRemixResponse.remixed_lyrics);
 
@@ -75,11 +75,11 @@ async function handleRemixSubmission() {
 
             // And put them inside the containers
             newLyrics = getLyricsResponse.lyrics.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
-            newRemixed = findRemixResponse.remixed_lyrics.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
+            newRemixed = remixLyricsResponse.remixed_lyrics.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
             const lyricsDisplay = document.getElementById('lyricsDisplay');
             lyricsDisplay.innerHTML += newLyrics;
             const remixDisplay = document.getElementById('remixDisplay');
-            remixDisplay.innerHTML += newRemixed;
+            remixDisplay.innerHTML = newRemixed;
             // $('#lyricsDisplay').val(getLyricsResponse.lyrics);
             // $('#remixDisplay').val(remixLyricsResponse.remixed_lyrics);
 
